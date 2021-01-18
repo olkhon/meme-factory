@@ -6,6 +6,8 @@ function App() {
   const [images, setImages] = useState("");
   const [randomImage, setRandomImage] = useState("");
   const [trueState, setTrueState] = useState(true);
+  const [textUp, setTextUp] = useState('');
+  const [textDown, setTextDown] = useState('');
   axios
     .get("https://api.imgflip.com/get_memes")
     .then((response) => {
@@ -35,8 +37,9 @@ function App() {
     <div className='App'>
       <h1>I can has Memes</h1>
       <div className='holderTextInputs'>
-        <input type='text' placeholder='Create your own Meme'></input>
-        <button>Send your meme</button>
+        <input type="text" placeholder="Type in above text"  onChange={(e) => setTextUp(e.target.value)} />
+        <input type="text" placeholder="Type in downtext"  onChange={(e) => setTextDown(e.target.value)} />
+
       </div>
       <div className='holderButtonInputs'>
         <button onClick={getRandomImg}>Random Pic</button>
@@ -51,8 +54,8 @@ function App() {
             <img src={randomImage} alt='Meme Pic' />
           }
 
-          <div class='centerTop'>Top Center</div>
-          <div class='centerBottom'>Bottom Center</div>
+          <div class='centerTop'>{textUp}</div>
+          <div class='centerBottom'>{textDown}</div>
         </div>
       </div>
     </div>
