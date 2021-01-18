@@ -50,6 +50,9 @@ img {
   color: black;
 }
 
+.holderInputs, .holderButtonInputs {
+  margin: 2% 2%;
+}
 
 .centerTop {
   position: absolute;
