@@ -30,8 +30,12 @@ const [img, setImg] = useState('');
      </div>
      <div className="holderImage">
 
+      <div className="containerImage">
+      <img src={img} alt="memPic" />
+      <div class="centerTop">Top Center</div>
+      <div class="centerBottom">Bottom Center</div>
+      </div>
 
-        <img src={img} alt="memPic" />
 
      </div>
     </div>
