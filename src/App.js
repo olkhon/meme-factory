@@ -9,16 +9,39 @@ function App() {
   const [trueState, setTrueState] = useState(true);
   const [textUp, setTextUp] = useState("");
   const [textDown, setTextDown] = useState("");
+  const [counterDelete, setCounterDelete] = useState(false)
+  const [allImages, setAllImages] = useState('');
+
+
+/*
+  axios
+  .get("https://api.imgflip.com/get_memes")
+  .then((response) => {
+    setAllImages(response.data.data.memes);
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+*/
+
+
+
+ // get first image
   axios
     .get("https://api.imgflip.com/get_memes")
     .then((response) => {
       // set first img of api call as picture
-      setImages(response.data.data.memes[0].url);
+      counterDelete === false ?
+      setImages(response.data.data.memes[0].url)
+      :
+      setImages('')
     })
     .catch((error) => {
       console.log(error);
     });
 
+
+    //get random image
   const getRandomImg = () => {
     let randomNumber = Math.floor(Math.random() * 99);
 
@@ -37,6 +60,8 @@ function App() {
   const deleteInput = () => {
     setTextDown("");
     setTextUp("");
+    setCounterDelete(true);
+    setRandomImage('')
   };
 
   const downloadCurrentImage = () => {
