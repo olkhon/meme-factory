@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import domtoimage from 'dom-to-image';
 
 function App() {
   const [images, setImages] = useState("");
