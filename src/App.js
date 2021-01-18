@@ -33,11 +33,16 @@ function App() {
       });
   };
 
+  const deleteInput = () => {
+    setTextDown('');
+    setTextUp('');
+  }
+
   return (
     <div className='App'>
       <h1>I can has Memes</h1>
       <div className='holderTextInputs'>
-        <input type="text" placeholder="Type in above text"  onChange={(e) => setTextUp(e.target.value)} />
+        <input type="text" placeholder="Type in above text"   onChange={(e) => setTextUp(e.target.value)} />
         <input type="text" placeholder="Type in downtext"  onChange={(e) => setTextDown(e.target.value)} />
 
       </div>
@@ -45,6 +50,7 @@ function App() {
         <button onClick={getRandomImg}>Random Pic</button>
         <button>Upload Pic</button>
         <button>Generate </button>
+        <button onClick={deleteInput}>Delete Text Input</button>
       </div>
       <div className='holderImage'>
         <div className='containerImage'>
