@@ -50,23 +50,33 @@ img {
   color: black;
 }
 
+
+.holderImage, .containerText {
+  overflow: hidden;
+}
+
 .holderInputs, .holderButtonInputs {
   margin: 2% 2%;
+
 }
 
 .centerTop {
   position: absolute;
-  top:  0%;
+  top:  10%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
   color: white;
+  overflow: hidden;
+
 }
 .centerBottom {
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
   color: white;
+  overflow: hidden;
+
 }

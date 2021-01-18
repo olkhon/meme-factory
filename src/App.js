@@ -59,10 +59,14 @@ function App() {
            :
             <img src={randomImage} alt='Meme Pic' />
           }
-
+          <div className="containerText">
           <div class='centerTop'>{textUp}</div>
           <div class='centerBottom'>{textDown}</div>
+          </div>
+
+
         </div>
+
       </div>
     </div>
   );
