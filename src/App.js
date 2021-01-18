@@ -9,7 +9,9 @@ function App() {
     axios
       .get("https://api.imgflip.com/get_memes")
       .then((response) => {
-        setImages(response.data.data.memes);
+
+        // set first img of api call as picture
+        setImages(response.data.data.memes[0].url);
       })
       .catch((error) => {
         console.log(error);
@@ -26,7 +28,8 @@ function App() {
     })*/
 
   // returns first Element of images array from API
-  let firstImageUrl = images[0].url;
+
+  // onclick random Pick is rendered
 
 
   return (
@@ -43,7 +46,7 @@ function App() {
       </div>
       <div className='holderImage'>
         <div className='containerImage'>
-          <img src={firstImageUrl} alt='memPic' />
+          <img src={images} alt='memPic' />
           <div class='centerTop'>Top Center</div>
           <div class='centerBottom'>Bottom Center</div>
         </div>
