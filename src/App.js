@@ -4,33 +4,32 @@ import axios from "axios";
 
 function App() {
   const [images, setImages] = useState("");
+  const [randomImage, setRandomImage] = useState("");
+  const [trueState, setTrueState] = useState(true);
+  axios
+    .get("https://api.imgflip.com/get_memes")
+    .then((response) => {
+      // set first img of api call as picture
+      setImages(response.data.data.memes[0].url);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-  useEffect(() => {
+  const getRandomImg = () => {
+    let randomNumber = Math.floor(Math.random() * 99);
+
     axios
       .get("https://api.imgflip.com/get_memes")
       .then((response) => {
-
-        // set first img of api call as picture
-        setImages(response.data.data.memes[0].url);
+        // random img on click
+        setRandomImage(response.data.data.memes[randomNumber].url);
+        setTrueState(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
-  console.log(images);
-
-
-    /*   images.map((img) => {
-      return (
-        console.log(img.url)
-      )
-    })*/
-
-  // returns first Element of images array from API
-
-  // onclick random Pick is rendered
-
+  };
 
   return (
     <div className='App'>
@@ -40,13 +39,18 @@ function App() {
         <button>Send your meme</button>
       </div>
       <div className='holderButtonInputs'>
-        <button>Random Pic</button>
+        <button onClick={getRandomImg}>Random Pic</button>
         <button>Upload Pic</button>
         <button>Generate </button>
       </div>
       <div className='holderImage'>
         <div className='containerImage'>
-          <img src={images} alt='memPic' />
+          {trueState === true ?
+            <img src={images} alt='Meme Pic' />
+           :
+            <img src={randomImage} alt='Meme Pic' />
+          }
+
           <div class='centerTop'>Top Center</div>
           <div class='centerBottom'>Bottom Center</div>
         </div>
