@@ -72,9 +72,13 @@ function App() {
   const deleteInput = () => {
     setTextDown("");
     setTextUp("");
+
+  };
+
+  const deleteImage = () => {
     setCounterDelete(true);
     setRandomImage("");
-  };
+  }
 
   const downloadCurrentImage = () => {
     domtoimage
@@ -109,6 +113,7 @@ function App() {
         <button onClick={getRandomImg}>Random Pic</button>
         <button>Upload Pic</button>
         <button onClick={deleteInput}>Delete Text Input</button>
+        <button onClick={deleteImage}>Delete Image</button>
         <button onClick={downloadCurrentImage}>Download current image</button>
       </div>
       <div className='holderImage'>
@@ -125,11 +130,16 @@ function App() {
         </div>
       </div>
       <div className='holderGallery'>
-              {allImages.map(({id, name, url}) => {
+
+        {/*
+
+         {allImages.map(({id, name, url}) => {
                 return (
                <div key={id}><img src={url} alt={name} /></div>
                 )
               })}
+        */}
+
 
 
       </div>
