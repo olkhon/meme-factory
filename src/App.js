@@ -10,7 +10,7 @@ function App() {
   const [textUp, setTextUp] = useState("");
   const [textDown, setTextDown] = useState("");
   const [counterDelete, setCounterDelete] = useState(false);
-  const [allImages, setAllImages] = useState("");
+  const [allImages, setAllImages] = useState([]);
 
   /*
   axios
@@ -28,12 +28,11 @@ function App() {
       .get("https://api.imgflip.com/get_memes")
       .then((response) => {
         setAllImages(response.data.data.memes);
-        console.log(allImages);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
 
 
@@ -126,9 +125,9 @@ function App() {
         </div>
       </div>
       <div className='holderGallery'>
-              {allImages.map((allimage) => {
+              {allImages.map(({id, name, url}) => {
                 return (
-                  {allimage}
+               <div key={id}><img src={url} alt={name} /></div>
                 )
               })}
 
