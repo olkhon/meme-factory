@@ -9,11 +9,10 @@ function App() {
   const [trueState, setTrueState] = useState(true);
   const [textUp, setTextUp] = useState("");
   const [textDown, setTextDown] = useState("");
-  const [counterDelete, setCounterDelete] = useState(false)
-  const [allImages, setAllImages] = useState('');
+  const [counterDelete, setCounterDelete] = useState(false);
+  const [allImages, setAllImages] = useState("");
 
-
-/*
+  /*
   axios
   .get("https://api.imgflip.com/get_memes")
   .then((response) => {
@@ -24,24 +23,54 @@ function App() {
   });
 */
 
+  useEffect(() => {
+    axios
+      .get("https://api.imgflip.com/get_memes")
+      .then((response) => {
+        setAllImages(response.data.data);
+        console.log(allImages);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+/*
+  allImages.map((img) => {
+    return (
+      <div>
+        {img.url}
+      </div>
+    )
+  })
+*/
 
 
- // get first image
-  axios
-    .get("https://api.imgflip.com/get_memes")
-    .then((response) => {
-      // set first img of api call as picture
-      counterDelete === false ?
-      setImages(response.data.data.memes[0].url)
-      :
-      setImages('')
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 
 
-    //get random image
+
+
+  /*
+  console.log(allImages);
+*/
+
+
+  useEffect(() => {
+    // get first image
+    axios
+      .get("https://api.imgflip.com/get_memes")
+      .then((response) => {
+        // set first img of api call as picture
+        counterDelete === false
+          ? setImages(response.data.data.memes[0].url)
+          : setImages("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  //get random image
   const getRandomImg = () => {
     let randomNumber = Math.floor(Math.random() * 99);
 
@@ -61,7 +90,7 @@ function App() {
     setTextDown("");
     setTextUp("");
     setCounterDelete(true);
-    setRandomImage('')
+    setRandomImage("");
   };
 
   const downloadCurrentImage = () => {
@@ -96,7 +125,6 @@ function App() {
       <div className='holderButtonInputs'>
         <button onClick={getRandomImg}>Random Pic</button>
         <button>Upload Pic</button>
-        <button>Generate </button>
         <button onClick={deleteInput}>Delete Text Input</button>
         <button onClick={downloadCurrentImage}>Download current image</button>
       </div>
