@@ -27,7 +27,7 @@ function App() {
     axios
       .get("https://api.imgflip.com/get_memes")
       .then((response) => {
-        setAllImages(response.data.data);
+        setAllImages(response.data.data.memes);
         console.log(allImages);
       })
       .catch((error) => {
@@ -35,24 +35,8 @@ function App() {
       });
   }, []);
 
-/*
-  allImages.map((img) => {
-    return (
-      <div>
-        {img.url}
-      </div>
-    )
-  })
-*/
 
 
-
-
-
-
-  /*
-  console.log(allImages);
-*/
 
 
   useEffect(() => {
@@ -140,6 +124,15 @@ function App() {
             <div class='centerBottom'>{textDown}</div>
           </div>
         </div>
+      </div>
+      <div className='holderGallery'>
+              {allImages.map((allimage) => {
+                return (
+                  {allimage}
+                )
+              })}
+
+
       </div>
     </div>
   );
