@@ -34,10 +34,6 @@ function App() {
       });
   });
 
-
-
-
-
   useEffect(() => {
     // get first image
     axios
@@ -72,12 +68,20 @@ function App() {
   const deleteInput = () => {
     setTextDown("");
     setTextUp("");
-
   };
 
   const deleteImage = () => {
     setCounterDelete(true);
     setRandomImage("");
+  };
+
+
+  const upload = () => {
+    alert('text');
+    const selectedFile = document.getElementById('input').files[0];
+    console.log(selectedFile);
+    setImages('');
+    setImages(selectedFile);
   }
 
   const downloadCurrentImage = () => {
@@ -111,10 +115,11 @@ function App() {
       </div>
       <div className='holderButtonInputs'>
         <button onClick={getRandomImg}>Random Pic</button>
-        <button>Upload Pic</button>
+        <input type="file" id="input" placeholder={'Upload pic'} multiple /><button onClick={upload}>Upload</button>
         <button onClick={deleteInput}>Delete Text Input</button>
         <button onClick={deleteImage}>Delete Image</button>
         <button onClick={downloadCurrentImage}>Download current image</button>
+
       </div>
       <div className='holderImage'>
         <div className='containerImage'>
@@ -133,15 +138,28 @@ function App() {
 
         {/*
 
-         {allImages.map(({id, name, url}) => {
-                return (
-               <div key={id}><img src={url} alt={name} /></div>
-                )
-              })}
+           {allImages.map((img, index) => {
+          return (
+            <div>
+              <img src={img.url} alt={index} />
+            </div>
+          );
+        })}
+
         */}
 
 
+        {/*
 
+{allImages.map(({id, name, url}) => {
+                return (
+               <div key={id}>
+                 <img src={url} alt={name} />
+
+                 </div>
+                )
+              })}
+*/}
       </div>
     </div>
   );
