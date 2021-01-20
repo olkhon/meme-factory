@@ -81,9 +81,10 @@ function App() {
   const upload = () => {
     alert('text');
     const selectedFile = document.getElementById('input').files[0];
+    const objectURL = URL.createObjectURL(selectedFile)
     setCounterUpload(true);
-    setUploadPic(selectedFile);
-    console.log(selectedFile);
+    setUploadPic(objectURL);
+    console.log(objectURL);
   }
 
   const downloadCurrentImage = () => {
