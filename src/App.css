@@ -37,70 +37,35 @@
   }
 }
 
-
 img {
-  height: 200px;
   width: 200px;
+  height: 200px;
+  border: 5px black solid;
+  border-radius: 10px;
 }
 
-/* Container holding the image and the text */
+
+
+
+.up {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  font-family: Impact;
+  color: yellow;
+  background:black;
+}
+
+.down {
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+  font-family: Impact;
+  color: yellow;
+  background:black;
+}
+
 .containerImage {
   position: relative;
   text-align: center;
-  color: black;
-}
-
-
-.holderImage, .containerText {
-  overflow: hidden;
-}
-
-.holderInputs, .holderButtonInputs {
-  margin: 2% 2%;
-
-}
-
-.centerTop {
-  position: absolute;
-  top:  25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  overflow: hidden;
-
-}
-.centerBottom {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  overflow: hidden;
-
-}
-
-
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-}
-
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
-}
-
-.wrapperDivImg {
-
 }
