@@ -77,15 +77,14 @@ function App() {
     setRandomImage("");
   };
 
-
   const upload = () => {
-    alert('text');
-    const selectedFile = document.getElementById('input').files[0];
-    const objectURL = URL.createObjectURL(selectedFile)
+    alert("text");
+    const selectedFile = document.getElementById("input").files[0];
+    const objectURL = URL.createObjectURL(selectedFile);
     setCounterUpload(true);
     setUploadPic(objectURL);
-    console.log(objectURL);
-  }
+    console.log(selectedFile);
+  };
 
   const downloadCurrentImage = () => {
     domtoimage
@@ -118,34 +117,45 @@ function App() {
       </div>
       <div className='holderButtonInputs'>
         <button onClick={getRandomImg}>Random Pic</button>
-        <input type="file" id="input" placeholder={'Upload pic'} multiple /><button onClick={upload}>Upload</button>
+        <input type='file' id='input' placeholder={"Upload pic"} multiple />
+        <button onClick={upload}>Upload</button>
         <button onClick={deleteInput}>Delete Text Input</button>
         <button onClick={deleteImage}>Delete Image</button>
         <button onClick={downloadCurrentImage}>Download current image</button>
-
       </div>
       <div className='holderImage'>
-
         <div className='containerImage'>
-          {
-         counterUpload === false ?
-          trueState === true  ? (
-            <img src={images} id='image' alt='Meme Pic' />
+          {trueState === true ? (
+            <div>
+              {" "}
+              <h2>Pic from Api</h2>
+              <img src={images} id='image' alt='Meme Pic' />
+            </div>
           ) : (
-            <img src={randomImage} id='image' alt='Meme Pic' />
-          )
-            :
-            <img src={uploadPic} id='image' alt='Meme Pic' />
-
-        }
+            <div>
+              <h2>Random Pic</h2>
+              <img src={randomImage} id='image' alt='Meme Pic' />
+            </div>
+          )}
           <div className='containerText'>
             <div class='centerTop'>{textUp}</div>
             <div class='centerBottom'>{textDown}</div>
           </div>
         </div>
+        <div className='uploadDiv'>
+          {counterUpload === true ? (
+            <div>
+              <h2>Upload Pic</h2>
+              <img src={uploadPic} />
+            </div>
+          ) : (
+            <div>
+              <h2>There has been no pic uploaded</h2>
+            </div>
+          )}
+        </div>
       </div>
       <div className='holderGallery'>
-
         {/*
 
            {allImages.map((img, index) => {
@@ -157,7 +167,6 @@ function App() {
         })}
 
         */}
-
 
         {/*
 
