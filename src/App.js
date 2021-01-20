@@ -10,7 +10,9 @@ function App() {
   const [textUp, setTextUp] = useState("");
   const [textDown, setTextDown] = useState("");
   const [counterDelete, setCounterDelete] = useState(false);
+  const [counterUpload, setCounterUpload] = useState(false);
   const [allImages, setAllImages] = useState([]);
+  const [uploadPic, setUploadPic] = useState([]);
 
   /*
   axios
@@ -79,9 +81,9 @@ function App() {
   const upload = () => {
     alert('text');
     const selectedFile = document.getElementById('input').files[0];
+    setCounterUpload(true);
+    setUploadPic(selectedFile);
     console.log(selectedFile);
-    setImages('');
-    setImages(selectedFile);
   }
 
   const downloadCurrentImage = () => {
@@ -122,12 +124,19 @@ function App() {
 
       </div>
       <div className='holderImage'>
+
         <div className='containerImage'>
-          {trueState === true ? (
+          {
+         counterUpload === false ?
+          trueState === true  ? (
             <img src={images} id='image' alt='Meme Pic' />
           ) : (
             <img src={randomImage} id='image' alt='Meme Pic' />
-          )}
+          )
+            :
+            <img src={uploadPic} id='image' alt='Meme Pic' />
+
+        }
           <div className='containerText'>
             <div class='centerTop'>{textUp}</div>
             <div class='centerBottom'>{textDown}</div>
