@@ -100,6 +100,12 @@ function App() {
       });
   };
 
+
+
+  // pagination
+
+
+
   return (
     <div className='App'>
       <h1>I can has Memes</h1>
@@ -156,17 +162,45 @@ function App() {
         </div>
       </div>
       <div className='holderGallery'>
-        {/*
+            <h2>Gallery</h2>
+      <div class="pagination">
 
-           {allImages.map((img, index) => {
-          return (
+  {allImages.map((img, index) => {
+    return (
+      <div className="wrapperDivImg">    {index < 10 ?
+        <div>   <img src={img.url} alt={index} /></div>
+
+        :
+        <div></div>
+      }</div>
+
+    )
+
+})}
+<a href="#">&laquo;</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div>
+
+
+
+
+
             <div>
-              <img src={img.url} alt={index} />
-            </div>
-          );
-        })}
 
-        */}
+
+
+            </div>
+
+
+          );
+
+
+
 
         {/*
 
